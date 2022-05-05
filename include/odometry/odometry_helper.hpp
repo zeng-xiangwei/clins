@@ -34,7 +34,6 @@
 #include <yaml-cpp/yaml.h>
 
 #include <clins/feature_cloud.h>
-#include <feature/feature_extraction.h>
 #include <odometry/imu_state_estimator.h>
 #include <odometry/inertial_initializer.h>
 #include <utils/gps_convert_utils.h>
@@ -42,6 +41,7 @@
 #include <visualization_msgs/MarkerArray.h>
 #include <odometry/lidar_odometry.hpp>
 #include <odometry/odom_visualizer.hpp>
+#include <feature/feature_extraction.h>
 
 namespace clins {
 
@@ -500,7 +500,7 @@ void OdometryHelper<_N>::PublishLoopClosureMarkers() {
   if (loop_closure_info.empty()) return;
   visualization_msgs::MarkerArray marker_array;
   visualization_msgs::Marker marker_node;
-  marker_node.header.frame_id = "/map";
+  marker_node.header.frame_id = "map";
   marker_node.header.stamp = ros::Time::now();
   marker_node.action = visualization_msgs::Marker::ADD;
   marker_node.type = visualization_msgs::Marker::SPHERE_LIST;
@@ -517,7 +517,7 @@ void OdometryHelper<_N>::PublishLoopClosureMarkers() {
 
   // loop edges
   visualization_msgs::Marker marker_edge;
-  marker_edge.header.frame_id = "/map";
+  marker_edge.header.frame_id = "map";
   marker_edge.header.stamp = ros::Time::now();
   marker_edge.action = visualization_msgs::Marker::ADD;
   marker_edge.type = visualization_msgs::Marker::LINE_LIST;

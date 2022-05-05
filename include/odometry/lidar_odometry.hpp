@@ -20,7 +20,6 @@
 #ifndef LIDAR_ODOMETRY_HPP
 #define LIDAR_ODOMETRY_HPP
 
-#include <feature/feature_extraction.h>
 #include <sensor_data/imu_data.h>
 #include <basalt/utils/eigen_utils.hpp>
 #include <memory>
@@ -47,6 +46,7 @@
 #include <ceres/solver.h>
 #include <pose_graph/pose_graph_3d_error_term.h>
 #include <pose_graph/types.h>
+#include <feature/feature_extraction.h>
 
 namespace clins {
 
@@ -336,6 +336,8 @@ bool LidarOdometry<_N>::UpdateOdometry() {
                                          feature_cur_ds_);
 
   UpdateKeyFrames();
+  
+  return true;
 }
 
 template <int _N>

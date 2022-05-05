@@ -10,7 +10,7 @@ min_distance: 1.0
 max_distance: 20.0
 
 ## Bag Param
-bag_path: /media/ha/ORICO/clins_dataset/lio-mapping/slow2_recover.bag
+bag_path: /home/dut-zxw/zxw/data_bag/HKUST_indoor_with_ground-truth/fast1.bag
 imu_topic: /imu/data
 gps_topic: /fix
 bag_start: 0

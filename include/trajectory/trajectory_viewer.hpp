@@ -127,7 +127,7 @@ class TrajectoryViewer {
       imu_array_est.linear_accelerations.push_back(accel2);
     }
     imu_array_raw.header.stamp = ros::Time::now();
-    imu_array_raw.header.frame_id = "/imu";
+    imu_array_raw.header.frame_id = "imu";
 
     imu_array_est.header = imu_array_raw.header;
 
@@ -194,7 +194,7 @@ class TrajectoryViewer {
       imu_array_est.linear_accelerations.push_back(accel2);
     }
     imu_array_raw.header.stamp = ros::Time::now();
-    imu_array_raw.header.frame_id = "/imu";
+    imu_array_raw.header.frame_id = "imu";
 
     imu_array_est.header = imu_array_raw.header;
 
@@ -243,7 +243,7 @@ class TrajectoryViewer {
       vicon_path_est.orientations.push_back(orientation);
     }
 
-    vicon_path_raw.header.frame_id = "/map";
+    vicon_path_raw.header.frame_id = "map";
     vicon_path_raw.header.stamp = ros::Time::now();
     vicon_path_est.header = vicon_path_raw.header;
 
@@ -287,7 +287,7 @@ class TrajectoryViewer {
       vicon_path_est.orientations.push_back(orientation);
     }
 
-    vicon_path_raw.header.frame_id = "/map";
+    vicon_path_raw.header.frame_id = "map";
     vicon_path_raw.header.stamp = ros::Time::now();
     vicon_path_est.header = vicon_path_raw.header;
 
@@ -323,7 +323,7 @@ class TrajectoryViewer {
       imu_ori_path_est.orientations.push_back(orientation);
     }
 
-    imu_ori_path_raw.header.frame_id = "/map";
+    imu_ori_path_raw.header.frame_id = "map";
     imu_ori_path_raw.header.stamp = ros::Time::now();
     imu_ori_path_est.header = imu_ori_path_raw.header;
 
@@ -346,7 +346,7 @@ class TrajectoryViewer {
       SE3d pose = trajectory->pose(t);
       geometry_msgs::PoseStamped poseIinG;
       poseIinG.header.stamp = t_temp.fromSec(t);
-      poseIinG.header.frame_id = "/map";
+      poseIinG.header.frame_id = "map";
       tf::pointEigenToMsg(pose.translation(), poseIinG.pose.position);
       tf::quaternionEigenToMsg(pose.unit_quaternion(),
                                poseIinG.pose.orientation);
@@ -355,7 +355,7 @@ class TrajectoryViewer {
 
     nav_msgs::Path traj_path;
     traj_path.header.stamp = time_now;
-    traj_path.header.frame_id = "/map";
+    traj_path.header.frame_id = "map";
     traj_path.poses = poses_geo;
 
     pub_trajectory.publish(traj_path);
@@ -377,7 +377,7 @@ class TrajectoryViewer {
       SE3d pose = trajectory->pose(t);
       geometry_msgs::PoseStamped poseIinG;
       poseIinG.header.stamp = t_temp.fromSec(t);
-      poseIinG.header.frame_id = "/map";
+      poseIinG.header.frame_id = "map";
       tf::pointEigenToMsg(pose.translation(), poseIinG.pose.position);
       tf::quaternionEigenToMsg(pose.unit_quaternion(),
                                poseIinG.pose.orientation);
@@ -386,7 +386,7 @@ class TrajectoryViewer {
 
     nav_msgs::Path traj_path;
     traj_path.header.stamp = time_now;
-    traj_path.header.frame_id = "/map";
+    traj_path.header.frame_id = "map";
     traj_path.poses = poses_geo;
 
     publisher::pub_spline_trajectory_.publish(traj_path);
@@ -409,7 +409,7 @@ class TrajectoryViewer {
       sensor_msgs::PointCloud2 target_msg;
       pcl::toROSMsg(target_cloud, target_msg);
       target_msg.header.stamp = ros::Time::now();
-      target_msg.header.frame_id = "/map";
+      target_msg.header.frame_id = "map";
 
       publisher::pub_target_dense_cloud_.publish(target_msg);
     }
@@ -436,7 +436,7 @@ class TrajectoryViewer {
       sensor_msgs::PointCloud2 source_msg;
       pcl::toROSMsg(source_cloud, source_msg);
       source_msg.header.stamp = ros::Time::now();
-      source_msg.header.frame_id = "/map";
+      source_msg.header.frame_id = "map";
       publisher::pub_source_dense_cloud_.publish(source_msg);
     }
   }
@@ -454,9 +454,9 @@ class TrajectoryViewer {
                              transform_matrix);
     pcl::toROSMsg(*transform_source_cloud, source_msg);
 
-    target_msg.header.frame_id = "/map";
-    source_msg.header.frame_id = "/map";
-    raw_source_msg.header.frame_id = "/map";
+    target_msg.header.frame_id = "map";
+    source_msg.header.frame_id = "map";
+    raw_source_msg.header.frame_id = "map";
 
     publisher::pub_icp_target_cloud_.publish(target_msg);
     publisher::pub_icp_source_cloud_.publish(source_msg);
@@ -478,8 +478,8 @@ class TrajectoryViewer {
     pcl::toROSMsg(target_cloud_in_G, target_msg);
     pcl::toROSMsg(source_cloud_in_G, source_msg);
 
-    target_msg.header.frame_id = "/map";
-    source_msg.header.frame_id = "/map";
+    target_msg.header.frame_id = "map";
+    source_msg.header.frame_id = "map";
 
     publisher::pub_icp_target_cloud_.publish(target_msg);
     publisher::pub_icp_source_cloud_.publish(source_msg);
@@ -493,7 +493,7 @@ class TrajectoryViewer {
     visualization_msgs::MarkerArray marker_array;
     // 优化前的节点
     visualization_msgs::Marker marker_node_before;
-    marker_node_before.header.frame_id = "/map";
+    marker_node_before.header.frame_id = "map";
     marker_node_before.header.stamp = ros::Time::now();
     marker_node_before.action = visualization_msgs::Marker::ADD;
     marker_node_before.type = visualization_msgs::Marker::SPHERE_LIST;
@@ -510,7 +510,7 @@ class TrajectoryViewer {
 
     // 优化后的节点
     visualization_msgs::Marker marker_node_after;
-    marker_node_after.header.frame_id = "/map";
+    marker_node_after.header.frame_id = "map";
     marker_node_after.header.stamp = ros::Time::now();
     marker_node_after.action = visualization_msgs::Marker::ADD;
     marker_node_after.type = visualization_msgs::Marker::SPHERE_LIST;
@@ -526,7 +526,7 @@ class TrajectoryViewer {
     marker_node_after.color.a = 1;
 
     visualization_msgs::Marker marker_edge;
-    marker_edge.header.frame_id = "/map";
+    marker_edge.header.frame_id = "map";
     marker_edge.header.stamp = ros::Time::now();
     marker_edge.action = visualization_msgs::Marker::ADD;
     marker_edge.type = visualization_msgs::Marker::LINE_LIST;

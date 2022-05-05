@@ -8,7 +8,7 @@ CLINS : Continuous-Time Trajectory Estimation for LiDAR-Inertial System
 
 - [**Sophus**](https://github.com/NikolausDemmel/Sophus/tree/eaf1e404992675a42892fa648d69d5bd933ff219) (Required by [basalt-headers](https://gitlab.com/VladyslavUsenko/basalt-headers))
 - **Ceres**
-- **yaml-cpp**
+- [**yaml-cpp**](https://github.com/jbeder/yaml-cpp)
 
 As a SLAMer, we are confident that you have the ability to solve the dependency by yourself.
 

@@ -5,7 +5,7 @@ project(clins)
 #set(CMAKE_CXX_FLAGS "-ftemplate-backtrace-limit=0  -march=${CXX_MARCH} -O3 -DBASALT_USE_CHOLMOD -DBASALT_DISABLE_ASSERTS -DNDEBUG")
 #set(CMAKE_CXX_FLAGS " -march=${CXX_MARCH} -O3")
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_BUILD_TYPE "RELEASE")
+set(CMAKE_BUILD_TYPE "release")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -msse4.2")
 #add_definitions(-O3 -msse -msse2 -msse3 -msse4 -msse4.1 -msse4.2)
 
@@ -84,8 +84,10 @@ list(APPEND thirdparty_libraries
         ${catkin_LIBRARIES}
         ${PCL_LIBRARIES}
         ${OpenCV_LIBS}
-        ${YAML_CPP_LIBRARIES}
+        # ${YAML_CPP_LIBRARIES}
+        yaml-cpp
         ceres
+        fmt
 )
 
 ################# Node ###################

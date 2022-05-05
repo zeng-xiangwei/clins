@@ -171,8 +171,7 @@ void FeatureExtraction::ProjectOrganizedCloud(
     const VPointCloud::Ptr cur_cloud, cv::Mat& dist_image,
     RTPointCloud::Ptr corresponding_cloud) {
   assert(cur_cloud->isOrganized() && cur_cloud->height == 16 &&
-         cur_cloud->width ==
-             1824 "[ProjectOrganizedCloud] input cloud should be organized");
+         cur_cloud->width == 1824);
 
   for (size_t column_id = 0; column_id < cur_cloud->width; ++column_id) {
     for (size_t row_id = 0; row_id < cur_cloud->height; ++row_id) {
